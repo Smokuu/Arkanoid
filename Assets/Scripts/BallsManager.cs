@@ -28,8 +28,8 @@ public class BallsManager : MonoBehaviour
 
     #endregion
 
+    
     [SerializeField]
-
     private Ball ballPrefab;
 
     private Ball initialBall;
@@ -57,7 +57,7 @@ public class BallsManager : MonoBehaviour
             {
                 initialBallRb.isKinematic = false;
                 initialBallRb.AddForce(new Vector2(0, initialBallSpeed));
-                GameManager.Intance.IsGameStarted = true;
+                GameManager.Instance.IsGameStarted = true;
 
             }
         }
@@ -67,7 +67,7 @@ public class BallsManager : MonoBehaviour
     {
         Vector3 paddlePosition = Paddle.Instance.gameObject.transform.position;
         Vector3 ballPosition = new Vector3(paddlePosition.x, paddlePosition.y + .27f, 0);
-        initialBall = Instantate(ballPrefab, startingPosition, Quaternion.identity);
+        initialBall = Instantiate(ballPrefab, startingPosition, Quaternion.identity);
         initialBallRb = initialBall.GetComponent<RigidBody2D>();
 
         this.Balls = new List<Ball>
