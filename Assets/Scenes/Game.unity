@@ -164,6 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2574296524da44f8240c60a232ae85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballPrefab: {fileID: 6821753160410031860, guid: 68d4c4ac24574bc41bb43850e27ef84e,
+    type: 3}
+  initialBallSpeed: 250
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,9 +6,9 @@ public class BallsManager : MonoBehaviour
 {
     #region Singleton
 
-    private static GameManager _instance;
+    private static BallsManager _instance;
 
-    public static GameManager Instance => _instance;
+    public static BallsManager Instance => _instance;
 
     private void Awake()
     {
@@ -34,15 +34,17 @@ public class BallsManager : MonoBehaviour
 
     private Ball initialBall;
 
+    public float initialBallSpeed = 250;
+
     private Rigidbody2D initialBallRb;
 
-    public float initialBallSpeed = 250;
+   
 
     public List<Ball> Balls { get; set;  }
 
     private void Start()
     {
-        initialBall();
+        InitBall();
     }
 
     private void Update()
@@ -66,9 +68,9 @@ public class BallsManager : MonoBehaviour
     private void InitBall()
     {
         Vector3 paddlePosition = Paddle.Instance.gameObject.transform.position;
-        Vector3 ballPosition = new Vector3(paddlePosition.x, paddlePosition.y + .27f, 0);
+        Vector3 startingPosition = new Vector3(paddlePosition.x, paddlePosition.y + .27f, 0);
         initialBall = Instantiate(ballPrefab, startingPosition, Quaternion.identity);
-        initialBallRb = initialBall.GetComponent<RigidBody2D>();
+        initialBallRb = initialBall.GetComponent<Rigidbody2D>();
 
         this.Balls = new List<Ball>
         {

@@ -10,6 +10,26 @@ public class Paddle : MonoBehaviour
     private float defaultLeftClamp = 135;
     private float defaultRightClamp = 410;
     private SpriteRenderer sr;
+    
+    #region Singleton
+
+    private static Paddle _instance;
+
+    public static Paddle Instance => _instance;
+
+    private void Awake()
+    {
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
+    #endregion
     private void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
