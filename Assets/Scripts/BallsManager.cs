@@ -36,6 +36,8 @@ public class BallsManager : MonoBehaviour
 
     public float initialBallSpeed = 250;
 
+    public float horizontalSpeed;
+
     private Rigidbody2D initialBallRb;
 
    
@@ -58,7 +60,9 @@ public class BallsManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 initialBallRb.isKinematic = false;
-                initialBallRb.AddForce(new Vector2(0, initialBallSpeed));
+                initialBallRb.gravityScale = 0;
+
+                initialBallRb.AddForce(new Vector2(Paddle.Instance.distanceTraveled * horizontalSpeed, initialBallSpeed));
                 GameManager.Instance.IsGameStarted = true;
 
             }
